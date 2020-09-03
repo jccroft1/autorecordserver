@@ -1,0 +1,15 @@
+
+version: "3"
+
+services:
+  autorecordserver:
+    image: jccroft1/autorecordserver:latest
+    ports:
+      - "443:443/tcp"
+    restart: unless-stopped
+    volumes:
+      - "/path/to/certs:/certs"
+    environment:
+    - PUBLIC_CERT=/certs/cert.pem
+    - PRIVATE_CERT=/certs/privkey.pem
+    - PORT=443
