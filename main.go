@@ -7,15 +7,15 @@ import (
 )
 
 var (
+	port        string
 	publicCert  string
 	privateCert string
-	port        string
 )
 
 func main() {
+	flag.StringVar(&port, "port", ":443", "custom port for server to listen on")
 	flag.StringVar(&publicCert, "public_cert", "/certs/cert.pem", "path for public certificate")
 	flag.StringVar(&privateCert, "private_cert", "/certs/privkey.pem", "path for private certificate")
-	flag.StringVar(&port, "port", ":443", "custom port for server to listen on")
 	flag.Parse()
 
 	http.HandleFunc("/", hello)
